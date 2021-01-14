@@ -47,6 +47,11 @@ namespace cf {
 			this.formEl = options.formEl;
 			this.submitCallback = options.submitCallback;
 
+			if(this.formEl.getAttribute("cf-prevent-autofocus") == "")
+				UserInput.preventAutoFocus = true;
+			
+			console.log(UserInput.preventAutoFocus, this.formEl, this.formEl.getAttribute("cf-prevent-autofocus"))
+
 			// 
 			this.dictionary = new Dictionary({
 				data: options.dictionaryData,
@@ -209,8 +214,12 @@ namespace cf {
 		}
 
 		public doSubmitForm(){
-			this.formEl.submit();
-			this.remove();
+			if(this.submitCallback){
+				this.submitCallback();
+			}else{
+				this.formEl.submit();
+				this.remove();
+			}
 		}
 
 		public remove(){

@@ -24,11 +24,20 @@ ConversationalForm will automatically look through the DOM for a form element wi
 
 That's it! Your form is now conversational :thumbsup:  
 
-Optional, if you want to have the ConversationalForm in a certain element (when auto-instantiating) then add attribute `cf-context` to an element, otherwise the ConversationalForm will be appended to the body element.
+## Optional attributes
+
+**cf-context**  
+If you want to have the ConversationalForm appended to a certain element (when auto-instantiating) then add attribute `cf-context` to an element, otherwise the ConversationalForm will be appended to the body element.
 ```html
 <div cf-context ...>
 ```
-  
+
+**cf-prevent-autofocus**  
+If you don't want to have the UserInput to auto focus.
+
+```html
+<form id="my-form-element" cf-form-element cf-prevent-autofocus>
+```
 
 ## Customization
 
@@ -123,6 +132,9 @@ previous input could be a select:option list with countries.
 ### cf-validation
 * Javascript validate a <Tag> before submitting
 * OBS. eval is used.
+* two parameters is passed to the method
+	* value: String, the value of the input field
+	* tag: ITag, the actual DOM tag
 ```html
 <input type="text" cf-validation="window.validateFunction" ..
 ```
@@ -136,7 +148,7 @@ previous input could be a select:option list with countries.
 
 
 # Public API
-When instantiating ConversationalForm a reference to the instance will be available in window scope. 
+When instantiating ConversationalForm a reference to the instance will be available in window scope.
 
 ```javascript
 window.ConversationalForm
@@ -149,7 +161,7 @@ window.ConversationalForm.remove();
 ```
 
 # Overwrite styles
-You can overwrite the UI with your own styles. Please see the source styl/css files for more info. 
+You can overwrite the UI with your own styles. Please see the source styles/css files for more info. 
 
 
 # Contribute to ConversationalForm
@@ -157,7 +169,7 @@ You can overwrite the UI with your own styles. Please see the source styl/css fi
 We welcome contributions in the form of bug reports, pull requests, or thoughtful discussions in the [GitHub issue tracker](https://github.com/space10-community/conversational-form/issues).
 
 ConversationalForm is a concept by [SPACE10](https://www.space10.io/). Brought to life by [Felix Nielsen](http://twitter.com/flexmotion), [RWATGG](http://rwatgg.com). Designed by [Charlie Isslander](https://twitter.com/charlieissland).
-  
+
 ## Build the source
 
 ### NPM
@@ -199,7 +211,7 @@ watch task, watches .styl, .ts, .jpg, .png, .gif, compiles to /build
 
 
 ### install new packages for dev
-	
+
 	$ cd gulp-tasks
 	$ npm install --save-dev XX
 
@@ -209,3 +221,9 @@ When you are up and running, you can find a few form tests in the /test folder.
 
 ## Browser support
 Tested in latest Chrome, Firefox, Safari and Internet Explorer.
+
+# Websites that use Conversational Form
+
+If you have a project that uses Conversational Form, feel free to make a PR to add it to this list:
+
+- http://www.be-the-first-one-here.com
